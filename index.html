@@ -852,7 +852,7 @@ footer {
 }
 .pp-overlay.show { display: flex; opacity: 1; }
 .pp-card {
-  position: relative; width: 100%; max-width: 420px;
+  position: relative; width: 100%; max-width: 460px;
   background: var(--white); border-radius: 20px; overflow: hidden;
   box-shadow: 0 30px 80px rgba(11,15,30,.35);
   transform: scale(.9) translateY(16px); transition: transform .3s cubic-bezier(.34,1.56,.64,1);
@@ -876,19 +876,32 @@ footer {
   font-size: 11.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
 }
 .pp-title { font-family: var(--font-display); font-size: 1.55rem; font-weight: 700; margin-top: 12px; line-height: 1.2; }
-.pp-body { padding: 30px 26px 26px; text-align: center; }
-.pp-prices { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: -34px; position: relative; z-index: 2; }
-.pp-price-box {
-  background: var(--white); border-radius: var(--r2); box-shadow: var(--sh2);
-  padding: 14px 20px; display: flex; flex-direction: column; align-items: center; gap: 2px;
+.pp-body { padding: 26px 24px 26px; text-align: center; }
+.pp-effective {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: -34px; position: relative; z-index: 3;
+  background: var(--ink); color: #fff; font-size: 11px; font-weight: 700;
+  padding: 6px 14px; border-radius: 20px; letter-spacing: .02em;
 }
-.pp-old { border: 1.5px dashed var(--border2); }
-.pp-new { border: 1.5px solid var(--saffron); background: #fff5ef; }
-.pp-lbl { font-size: 10.5px; font-weight: 700; color: var(--muted2); text-transform: uppercase; letter-spacing: .06em; }
-.pp-old .pp-amt { font-size: 1.25rem; font-weight: 800; color: var(--muted2); text-decoration: line-through; }
-.pp-new .pp-amt { font-size: 1.5rem; font-weight: 800; color: var(--saffron); }
-.pp-arrow { color: var(--saffron); font-size: 20px; font-weight: 800; }
-.pp-msg { margin-top: 20px; font-size: 14.5px; color: var(--ink2); line-height: 1.55; }
+.pp-table {
+  margin-top: 14px; background: var(--white); border-radius: var(--r2);
+  box-shadow: var(--sh2); overflow: hidden; text-align: left; border: 1px solid var(--border);
+}
+.pp-row {
+  display: grid; grid-template-columns: 1.7fr .75fr .75fr; align-items: center;
+  padding: 10px 14px; gap: 4px; border-bottom: 1px solid var(--border); font-size: 12.5px;
+}
+.pp-row:last-child { border-bottom: none; }
+.pp-row-head {
+  background: var(--off-white); font-weight: 800; font-size: 10px;
+  text-transform: uppercase; letter-spacing: .05em; color: var(--muted2); padding: 9px 14px;
+}
+.pp-row span { text-align: center; }
+.pp-row span:first-child { text-align: left; font-weight: 600; color: var(--ink2); }
+.pp-row-head span:first-child { text-align: left; }
+.pp-old-cell { text-decoration: line-through; color: var(--muted2); font-weight: 600; }
+.pp-new-cell { color: var(--saffron); font-weight: 800; }
+.pp-note { margin-top: 10px; font-size: 11px; color: var(--muted2); line-height: 1.5; }
+.pp-msg { margin-top: 18px; font-size: 14px; color: var(--ink2); line-height: 1.55; }
 .pp-msg b { color: var(--ink); }
 .pp-urgency {
   margin-top: 14px; display: flex; align-items: center; justify-content: center; gap: 7px;
@@ -912,8 +925,8 @@ footer {
 .pp-btn-secondary:hover { color: var(--ink); }
 @media (max-width: 480px) {
   .pp-title { font-size: 1.3rem; }
-  .pp-prices { gap: 10px; }
-  .pp-price-box { padding: 11px 14px; }
+  .pp-row { font-size: 11.5px; padding: 9px 10px; grid-template-columns: 1.5fr .8fr .8fr; }
+  .pp-row-head { padding: 8px 10px; font-size: 9.5px; }
 }
 </style>
 </head>
@@ -929,19 +942,30 @@ footer {
       <div class="pp-title">Passport Service Charges<br>Are Increasing Soon!</div>
     </div>
     <div class="pp-body">
-      <div class="pp-prices">
-        <div class="pp-price-box pp-old">
-          <span class="pp-lbl">Old Price</span>
-          <span class="pp-amt">₹1,500</span>
+      <span class="pp-effective">📆 New rates effective from 15th July 2026</span>
+      <div class="pp-table">
+        <div class="pp-row pp-row-head">
+          <span>Service</span><span>Old</span><span>New</span>
         </div>
-        <span class="pp-arrow">→</span>
-        <div class="pp-price-box pp-new">
-          <span class="pp-lbl">New Price</span>
-          <span class="pp-amt">₹1,800</span>
+        <div class="pp-row">
+          <span>Fresh Passport (Normal)</span><span class="pp-old-cell">₹1,500</span><span class="pp-new-cell">₹1,800</span>
+        </div>
+        <div class="pp-row">
+          <span>Fresh Passport (Tatkal)</span><span class="pp-old-cell">₹3,500</span><span class="pp-new-cell">₹3,900</span>
+        </div>
+        <div class="pp-row">
+          <span>Passport Renewal</span><span class="pp-old-cell">₹1,500</span><span class="pp-new-cell">₹1,800</span>
+        </div>
+        <div class="pp-row">
+          <span>Minor's Passport</span><span class="pp-old-cell">₹1,000</span><span class="pp-new-cell">₹1,300</span>
+        </div>
+        <div class="pp-row">
+          <span>Correction / Reissue</span><span class="pp-old-cell">₹1,500</span><span class="pp-new-cell">₹1,800</span>
         </div>
       </div>
+      <p class="pp-note">*Above are Chawla Solution service charges only. Govt. Passport Seva fee is separate & paid directly to the Passport office.</p>
       <p class="pp-msg">
-        Government & service charges for <b>Passport applications</b> (fresh, renewal & correction) are revising upward shortly. Book your appointment <b>today</b> to get your passport processed at the current rate.
+        Service charges for all <b>Passport applications</b> (fresh, renewal, tatkal & correction) are revising upward from the date above. Book your appointment <b>today</b> to get your passport processed at the current rate.
       </p>
       <div class="pp-urgency">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
