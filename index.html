@@ -928,6 +928,97 @@ footer {
   .pp-row { font-size: 11.5px; padding: 9px 10px; grid-template-columns: 1.5fr .8fr .8fr; }
   .pp-row-head { padding: 8px 10px; font-size: 9.5px; }
 }
+
+/* ═══════════════════════════════════════════
+   GOOGLE REVIEW POPUP
+═══════════════════════════════════════════ */
+.rv-overlay {
+  position: fixed; inset: 0; background: rgba(11,15,30,.62);
+  backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+  display: none; align-items: center; justify-content: center;
+  z-index: 1000; padding: 18px; opacity: 0; transition: opacity .25s ease;
+}
+.rv-overlay.show { display: flex; opacity: 1; }
+.rv-card {
+  position: relative; width: 100%; max-width: 400px;
+  background: var(--white); border-radius: 20px; overflow: hidden;
+  box-shadow: 0 30px 80px rgba(11,15,30,.35); text-align: center;
+  transform: scale(.9) translateY(16px); transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+  padding: 30px 26px 28px;
+}
+.rv-overlay.show .rv-card { transform: scale(1) translateY(0); }
+.rv-close {
+  position: absolute; top: 12px; right: 12px; width: 30px; height: 30px;
+  border-radius: 50%; background: var(--bg); border: none;
+  color: var(--muted); font-size: 16px; cursor: pointer; display: flex;
+  align-items: center; justify-content: center; transition: var(--transition); line-height: 1;
+}
+.rv-close:hover { background: var(--border); color: var(--ink); transform: rotate(90deg); }
+.rv-stars-row { font-size: 30px; color: #f5a623; letter-spacing: 4px; line-height: 1; }
+.rv-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--ink); margin-top: 14px; }
+.rv-sub { font-size: 13.5px; color: var(--muted); margin-top: 8px; line-height: 1.55; }
+.rv-badge {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 16px;
+  background: var(--blue-light); color: var(--blue); font-size: 12px; font-weight: 700;
+  padding: 6px 14px; border-radius: 20px;
+}
+.rv-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  background: linear-gradient(135deg, var(--blue), var(--blue3)); color: #fff; width: 100%;
+  padding: 14px; border-radius: var(--r2); font-weight: 700; font-size: 14.5px;
+  text-decoration: none; transition: var(--transition); box-shadow: 0 6px 22px rgba(24,71,212,.35);
+  margin-top: 20px;
+}
+.rv-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(24,71,212,.45); }
+.rv-btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+.rv-skip {
+  display: inline-flex; align-items: center; justify-content: center; margin-top: 10px;
+  color: var(--muted); font-weight: 600; font-size: 13px; padding: 6px;
+  background: none; border: none; cursor: pointer; text-decoration: underline; transition: var(--transition);
+}
+.rv-skip:hover { color: var(--ink); }
+
+/* ═══ FLOATING GOOGLE REVIEW BUTTON ═══ */
+.float-rv {
+  position: fixed; bottom: 100px; right: 28px; z-index: 999;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--white); display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 24px rgba(11,15,30,.22); border: 1px solid var(--border);
+  transition: var(--transition); text-decoration: none; font-size: 24px;
+}
+.float-rv:hover { transform: scale(1.1); box-shadow: 0 10px 30px rgba(11,15,30,.3); }
+.float-rv-tip {
+  position: absolute; right: 66px; top: 50%; transform: translateY(-50%);
+  background: var(--ink); color: #fff; padding: 7px 14px; border-radius: 25px;
+  font-size: 12.5px; font-weight: 700; white-space: nowrap;
+  box-shadow: var(--sh3); pointer-events: none; opacity: 0;
+  transition: var(--transition); font-family: var(--font);
+}
+.float-rv:hover .float-rv-tip { opacity: 1; }
+
+/* ═══ TESTIMONIALS REVIEW CTA ═══ */
+.tc-cta {
+  margin-top: 36px; background: linear-gradient(135deg, var(--blue-light), #f5f8ff);
+  border: 1px solid var(--blue-mid); border-radius: var(--r); padding: 28px 30px;
+  display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+}
+.tc-cta-left { display: flex; align-items: center; gap: 16px; }
+.tc-cta-stars { font-size: 26px; color: #f5a623; letter-spacing: 2px; line-height: 1; }
+.tc-cta-text h3 { font-size: 1.05rem; font-weight: 800; color: var(--ink); margin-bottom: 4px; }
+.tc-cta-text p { font-size: 13.5px; color: var(--muted); }
+.tc-cta-btn {
+  display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--blue), var(--blue3)); color: #fff;
+  padding: 13px 24px; border-radius: 25px; font-weight: 700; font-size: 13.5px;
+  text-decoration: none; transition: var(--transition); box-shadow: 0 5px 20px rgba(24,71,212,.35);
+}
+.tc-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(24,71,212,.45); }
+.tc-cta-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+@media (max-width: 600px) {
+  .tc-cta { flex-direction: column; text-align: center; padding: 24px 22px; }
+  .tc-cta-left { flex-direction: column; }
+  .float-rv { width: 48px; height: 48px; bottom: 86px; right: 20px; font-size: 20px; }
+}
 </style>
 </head>
 <body>
@@ -978,6 +1069,22 @@ footer {
         <button class="pp-btn-secondary" onclick="closePassportPopup()">Maybe later</button>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- ═══════════════ GOOGLE REVIEW POPUP ═══════════════ -->
+<div class="rv-overlay" id="rvOverlay">
+  <div class="rv-card">
+    <button class="rv-close" onclick="closeReviewPopup()" aria-label="Close popup">✕</button>
+    <div class="rv-stars-row">★★★★★</div>
+    <div class="rv-title">How Was Your Experience?</div>
+    <p class="rv-sub">If Chawla Solution helped you today, a quick Google review helps other people in Vadodara find us too. It takes less than a minute!</p>
+    <span class="rv-badge">⭐ 500+ Happy Clients Served</span>
+    <a href="https://www.google.com/search?q=Chawla+Solution+Reviews" target="_blank" rel="noopener" class="rv-btn" onclick="closeReviewPopup()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+      Write a Google Review
+    </a>
+    <button class="rv-skip" onclick="closeReviewPopup()">Maybe later</button>
   </div>
 </div>
 
@@ -1730,8 +1837,22 @@ footer {
         <span class="tc-service">GST Registration</span>
       </div>
     </div>
+    <div class="tc-cta reveal">
+      <div class="tc-cta-left">
+        <div class="tc-cta-stars">★★★★★</div>
+        <div class="tc-cta-text">
+          <h3>Had a great experience with us?</h3>
+          <p>Share it with others on Google — it genuinely helps our small business grow.</p>
+        </div>
+      </div>
+      <a href="https://www.google.com/search?q=Chawla+Solution+Reviews" target="_blank" rel="noopener" class="tc-cta-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        Write a Google Review
+      </a>
+    </div>
   </div>
 </section>
+
 
 <!-- ═══════════════ FAQ ═══════════════ -->
 <section class="faq" id="faq">
@@ -1920,6 +2041,12 @@ footer {
   </div>
 </footer>
 
+<!-- ═══════════════ FLOATING GOOGLE REVIEW ═══════════════ -->
+<a href="https://www.google.com/search?q=Chawla+Solution+Reviews" target="_blank" rel="noopener" class="float-rv" aria-label="Rate us on Google">
+  <span class="float-rv-tip">Rate us on Google</span>
+  ⭐
+</a>
+
 <!-- ═══════════════ FLOATING WHATSAPP ═══════════════ -->
 <a href="https://wa.me/919201347957" target="_blank" rel="noopener" class="float-wa" aria-label="Chat on WhatsApp">
   <span class="float-wa-tip">Chat with us!</span>
@@ -1953,6 +2080,46 @@ function closePassportPopup() {
       ov.addEventListener('click', (e) => { if (e.target === ov) closePassportPopup(); });
       document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePassportPopup(); });
     }
+  });
+})();
+
+/* ═══ GOOGLE REVIEW POPUP ═══ */
+function closeReviewPopup() {
+  const ov = document.getElementById('rvOverlay');
+  if (ov) {
+    ov.classList.remove('show');
+    setTimeout(() => { ov.style.display = 'none'; }, 250);
+  }
+  try { sessionStorage.setItem('reviewPopupSeen', '1'); } catch (e) {}
+}
+(function () {
+  let seen = false;
+  try { seen = sessionStorage.getItem('reviewPopupSeen') === '1'; } catch (e) {}
+  if (seen) return;
+  document.addEventListener('DOMContentLoaded', () => {
+    const rvOv = document.getElementById('rvOverlay');
+    const testiSection = document.getElementById('testimonials');
+    if (!rvOv || !testiSection) return;
+    rvOv.addEventListener('click', (e) => { if (e.target === rvOv) closeReviewPopup(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeReviewPopup(); });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          let alreadySeen = false;
+          try { alreadySeen = sessionStorage.getItem('reviewPopupSeen') === '1'; } catch (e) {}
+          const ppOv = document.getElementById('ppOverlay');
+          const ppOpen = ppOv && ppOv.classList.contains('show');
+          if (!alreadySeen && !ppOpen) {
+            setTimeout(() => {
+              rvOv.style.display = 'flex';
+              requestAnimationFrame(() => rvOv.classList.add('show'));
+            }, 1200);
+            observer.unobserve(testiSection);
+          }
+        }
+      });
+    }, { threshold: 0.4 });
+    observer.observe(testiSection);
   });
 })();
 
