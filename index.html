@@ -840,9 +840,122 @@ footer {
   .btn { padding: 12px 20px; font-size: 13.5px; }
   .why-grid, .testi-grid, .svc-panel.active { grid-template-columns: 1fr; }
 }
+
+/* ═══════════════════════════════════════════
+   PASSPORT URGENCY POPUP
+═══════════════════════════════════════════ */
+.pp-overlay {
+  position: fixed; inset: 0; background: rgba(11,15,30,.62);
+  backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+  display: none; align-items: center; justify-content: center;
+  z-index: 1000; padding: 18px; opacity: 0; transition: opacity .25s ease;
+}
+.pp-overlay.show { display: flex; opacity: 1; }
+.pp-card {
+  position: relative; width: 100%; max-width: 420px;
+  background: var(--white); border-radius: 20px; overflow: hidden;
+  box-shadow: 0 30px 80px rgba(11,15,30,.35);
+  transform: scale(.9) translateY(16px); transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+}
+.pp-overlay.show .pp-card { transform: scale(1) translateY(0); }
+.pp-top {
+  background: linear-gradient(135deg, var(--saffron), var(--saffron2));
+  padding: 22px 24px 36px; color: #fff; text-align: center; position: relative;
+}
+.pp-close {
+  position: absolute; top: 12px; right: 12px; width: 30px; height: 30px;
+  border-radius: 50%; background: rgba(255,255,255,.22); border: none;
+  color: #fff; font-size: 17px; cursor: pointer; display: flex;
+  align-items: center; justify-content: center; transition: var(--transition); line-height: 1;
+}
+.pp-close:hover { background: rgba(255,255,255,.38); transform: rotate(90deg); }
+.pp-flag { font-size: 30px; line-height: 1; }
+.pp-eyebrow {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 8px;
+  background: rgba(255,255,255,.2); padding: 5px 13px; border-radius: 20px;
+  font-size: 11.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+}
+.pp-title { font-family: var(--font-display); font-size: 1.55rem; font-weight: 700; margin-top: 12px; line-height: 1.2; }
+.pp-body { padding: 30px 26px 26px; text-align: center; }
+.pp-prices { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: -34px; position: relative; z-index: 2; }
+.pp-price-box {
+  background: var(--white); border-radius: var(--r2); box-shadow: var(--sh2);
+  padding: 14px 20px; display: flex; flex-direction: column; align-items: center; gap: 2px;
+}
+.pp-old { border: 1.5px dashed var(--border2); }
+.pp-new { border: 1.5px solid var(--saffron); background: #fff5ef; }
+.pp-lbl { font-size: 10.5px; font-weight: 700; color: var(--muted2); text-transform: uppercase; letter-spacing: .06em; }
+.pp-old .pp-amt { font-size: 1.25rem; font-weight: 800; color: var(--muted2); text-decoration: line-through; }
+.pp-new .pp-amt { font-size: 1.5rem; font-weight: 800; color: var(--saffron); }
+.pp-arrow { color: var(--saffron); font-size: 20px; font-weight: 800; }
+.pp-msg { margin-top: 20px; font-size: 14.5px; color: var(--ink2); line-height: 1.55; }
+.pp-msg b { color: var(--ink); }
+.pp-urgency {
+  margin-top: 14px; display: flex; align-items: center; justify-content: center; gap: 7px;
+  background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 13px;
+  padding: 9px 14px; border-radius: var(--r2);
+}
+.pp-urgency svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; flex-shrink: 0; }
+.pp-btns { display: flex; flex-direction: column; gap: 10px; margin-top: 22px; }
+.pp-btn-primary {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  background: linear-gradient(135deg, var(--saffron), var(--saffron2)); color: #fff;
+  padding: 14px; border-radius: var(--r2); font-weight: 700; font-size: 14.5px;
+  text-decoration: none; transition: var(--transition); box-shadow: 0 6px 22px rgba(240,90,26,.35);
+}
+.pp-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(240,90,26,.45); }
+.pp-btn-secondary {
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--muted); font-weight: 600; font-size: 13px; padding: 6px;
+  background: none; border: none; cursor: pointer; text-decoration: underline; transition: var(--transition);
+}
+.pp-btn-secondary:hover { color: var(--ink); }
+@media (max-width: 480px) {
+  .pp-title { font-size: 1.3rem; }
+  .pp-prices { gap: 10px; }
+  .pp-price-box { padding: 11px 14px; }
+}
 </style>
 </head>
 <body>
+
+<!-- ═══════════════ PASSPORT PRICE URGENCY POPUP ═══════════════ -->
+<div class="pp-overlay" id="ppOverlay">
+  <div class="pp-card">
+    <div class="pp-top">
+      <button class="pp-close" onclick="closePassportPopup()" aria-label="Close popup">✕</button>
+      <div class="pp-flag">🛂</div>
+      <div class="pp-eyebrow">⚠️ Passport Fee Update</div>
+      <div class="pp-title">Passport Service Charges<br>Are Increasing Soon!</div>
+    </div>
+    <div class="pp-body">
+      <div class="pp-prices">
+        <div class="pp-price-box pp-old">
+          <span class="pp-lbl">Old Price</span>
+          <span class="pp-amt">₹1,500</span>
+        </div>
+        <span class="pp-arrow">→</span>
+        <div class="pp-price-box pp-new">
+          <span class="pp-lbl">New Price</span>
+          <span class="pp-amt">₹1,800</span>
+        </div>
+      </div>
+      <p class="pp-msg">
+        Government & service charges for <b>Passport applications</b> (fresh, renewal & correction) are revising upward shortly. Book your appointment <b>today</b> to get your passport processed at the current rate.
+      </p>
+      <div class="pp-urgency">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Limited window — old pricing ends soon. Don't miss out!
+      </div>
+      <div class="pp-btns">
+        <a href="https://wa.me/919201347957?text=Hi%2C%20I%20want%20to%20book%20my%20Passport%20application%20at%20the%20old%20price%20before%20the%20new%20rate%20applies." target="_blank" rel="noopener" class="pp-btn-primary" onclick="closePassportPopup()">
+          📅 Book Now at Old Price
+        </a>
+        <button class="pp-btn-secondary" onclick="closePassportPopup()">Maybe later</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ═══════════════ TOPBAR ═══════════════ -->
 <div class="topbar">
@@ -1790,6 +1903,35 @@ footer {
 </a>
 
 <script>
+/* ═══ PASSPORT URGENCY POPUP ═══ */
+function closePassportPopup() {
+  const ov = document.getElementById('ppOverlay');
+  if (ov) {
+    ov.classList.remove('show');
+    setTimeout(() => { ov.style.display = 'none'; }, 250);
+  }
+  try { sessionStorage.setItem('passportPopupSeen', '1'); } catch (e) {}
+}
+(function () {
+  let seen = false;
+  try { seen = sessionStorage.getItem('passportPopupSeen') === '1'; } catch (e) {}
+  if (!seen) {
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const ov = document.getElementById('ppOverlay');
+        if (ov) { ov.style.display = 'flex'; requestAnimationFrame(() => ov.classList.add('show')); }
+      }, 1800);
+    });
+  }
+  document.addEventListener('DOMContentLoaded', () => {
+    const ov = document.getElementById('ppOverlay');
+    if (ov) {
+      ov.addEventListener('click', (e) => { if (e.target === ov) closePassportPopup(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePassportPopup(); });
+    }
+  });
+})();
+
 /* ═══ NAVBAR ═══ */
 function toggleMenu() {
   document.getElementById('mobileMenu').classList.toggle('open');
