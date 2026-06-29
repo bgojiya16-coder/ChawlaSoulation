@@ -1002,6 +1002,226 @@ footer {
   .tc-cta-left { flex-direction: column; }
   .float-rv { width: 48px; height: 48px; bottom: 86px; right: 20px; font-size: 20px; }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   GOVERNMENT SCHEME FINDER
+═══════════════════════════════════════════════════════════ */
+.gsf-banner {
+  background: linear-gradient(135deg, var(--blue-light), #f5f8ff);
+  border: 1px solid var(--blue-mid); border-radius: var(--r); padding: 18px 22px;
+  display: flex; align-items: center; gap: 14px; margin-bottom: 28px; flex-wrap: wrap;
+}
+.gsf-banner-icon { font-size: 26px; flex-shrink: 0; }
+.gsf-banner-text { flex: 1; min-width: 200px; font-size: 13px; color: var(--ink2); line-height: 1.5; }
+.gsf-banner-text b { color: var(--blue); }
+
+.gsf-controls {
+  background: var(--white); border: 1px solid var(--border); border-radius: var(--r);
+  box-shadow: var(--sh3); padding: 22px; margin-bottom: 24px;
+}
+.gsf-row1 { display: grid; grid-template-columns: 1.3fr 1fr; gap: 14px; margin-bottom: 14px; }
+.gsf-state-wrap { position: relative; }
+.gsf-state-wrap::before {
+  content: '📍'; position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+  font-size: 15px; pointer-events: none;
+}
+.gsf-select, .gsf-search {
+  width: 100%; padding: 13px 14px 13px 38px; border-radius: var(--r2);
+  border: 1.5px solid var(--border); font-family: var(--font); font-size: 13.5px;
+  color: var(--ink); background: var(--off-white); transition: var(--transition); appearance: none;
+}
+.gsf-select { cursor: pointer; }
+.gsf-select:focus, .gsf-search:focus { outline: none; border-color: var(--blue); background: var(--white); box-shadow: 0 0 0 3px var(--blue-light); }
+.gsf-search-wrap { position: relative; }
+.gsf-search-wrap::before { content: '🔍'; position: absolute; left: 14px; top: 50%; transform: translateY(-50%); font-size: 14px; }
+.gsf-row2 { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.gsf-filter-select {
+  flex: 1; min-width: 130px; padding: 10px 12px; border-radius: 10px;
+  border: 1.5px solid var(--border); font-family: var(--font); font-size: 12.5px;
+  color: var(--ink2); background: var(--off-white); cursor: pointer; transition: var(--transition);
+}
+.gsf-filter-select:focus { outline: none; border-color: var(--blue); }
+.gsf-elig-btn, .gsf-saved-btn {
+  display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; border-radius: 10px;
+  font-size: 12.5px; font-weight: 700; cursor: pointer; transition: var(--transition); white-space: nowrap; border: 1.5px solid transparent;
+}
+.gsf-elig-btn { background: linear-gradient(135deg, var(--blue), var(--blue3)); color: #fff; }
+.gsf-elig-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(24,71,212,.3); }
+.gsf-saved-btn { background: var(--off-white); border-color: var(--border); color: var(--ink2); }
+.gsf-saved-btn.active { background: #fff1e6; border-color: var(--saffron); color: var(--saffron); }
+.gsf-saved-btn:hover { border-color: var(--saffron); }
+
+.gsf-status-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+.gsf-chip {
+  display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 20px;
+  font-size: 12.5px; font-weight: 700; cursor: pointer; transition: var(--transition);
+  background: var(--white); border: 1.5px solid var(--border); color: var(--muted);
+}
+.gsf-chip:hover { border-color: var(--blue-mid); }
+.gsf-chip.active { background: var(--ink); border-color: var(--ink); color: #fff; }
+.gsf-chip .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.gsf-chip .dot.green { background: var(--green2); }
+.gsf-chip .dot.yellow { background: var(--gold); }
+.gsf-chip .dot.red { background: #e23744; }
+.gsf-chip .dot.gray { background: var(--muted2); }
+
+.gsf-count-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; flex-wrap: wrap; gap: 8px; }
+.gsf-count-text { font-size: 13px; color: var(--muted); font-weight: 600; }
+.gsf-count-text b { color: var(--ink); }
+
+.gsf-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 22px; }
+.gsf-card {
+  border-radius: var(--r); overflow: hidden; border: 1.5px solid var(--border);
+  background: var(--white); transition: var(--transition); display: flex; flex-direction: column;
+  animation: gsfFadeIn .4s ease both;
+}
+@keyframes gsfFadeIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+.gsf-card:hover { box-shadow: var(--sh2); transform: translateY(-4px); border-color: var(--blue-mid); }
+.gsf-card-top { padding: 20px 22px 0; display: flex; align-items: flex-start; gap: 13px; position: relative; }
+.gsf-icon { width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+.gsf-card-titlewrap { flex: 1; min-width: 0; }
+.gsf-card-name { font-size: 15px; font-weight: 800; color: var(--ink); line-height: 1.25; }
+.gsf-card-ministry { font-size: 10.5px; color: var(--muted2); font-weight: 600; margin-top: 3px; }
+.gsf-save-btn {
+  width: 32px; height: 32px; border-radius: 50%; border: none; background: var(--off-white);
+  display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0;
+  font-size: 15px; transition: var(--transition); color: var(--muted2);
+}
+.gsf-save-btn:hover { background: #fff1e6; color: var(--saffron); }
+.gsf-save-btn.saved { background: #fff1e6; color: var(--saffron); }
+.gsf-badges { display: flex; gap: 6px; flex-wrap: wrap; padding: 12px 22px 0; }
+.gsf-pill { display: inline-flex; align-items: center; gap: 5px; font-size: 10.5px; font-weight: 800; padding: 4px 10px; border-radius: 12px; text-transform: uppercase; letter-spacing: .03em; }
+.gsf-pill.open { background: var(--green-light); color: var(--green); }
+.gsf-pill.upcoming { background: #fef3c7; color: #92400e; }
+.gsf-pill.closed { background: #fee2e2; color: #b91c1c; }
+.gsf-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.gsf-pill-new { background: linear-gradient(135deg, var(--saffron), var(--saffron2)); color: #fff; }
+.gsf-pill-level { background: var(--blue-light); color: var(--blue); }
+.gsf-card-body { padding: 14px 22px 0; flex: 1; }
+.gsf-desc { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 14px; }
+.gsf-meta { display: flex; flex-direction: column; gap: 9px; margin-bottom: 14px; }
+.gsf-meta-row { display: flex; gap: 8px; font-size: 12px; line-height: 1.5; }
+.gsf-meta-label { font-weight: 700; color: var(--ink2); white-space: nowrap; flex-shrink: 0; }
+.gsf-meta-val { color: var(--muted); }
+.gsf-docs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.gsf-doc-chip { font-size: 10.5px; font-weight: 600; padding: 4px 10px; border-radius: 10px; background: var(--off-white); border: 1px solid var(--border); color: var(--ink2); }
+.gsf-dates {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; background: var(--off-white);
+  border: 1px solid var(--border); border-radius: 10px; padding: 11px 14px; margin-bottom: 14px;
+}
+.gsf-date-box span { display: block; }
+.gsf-date-lbl { font-size: 9.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; color: var(--muted2); margin-bottom: 2px; }
+.gsf-date-val { font-size: 12px; font-weight: 700; color: var(--ink); }
+.gsf-countdown { grid-column: 1 / -1; text-align: center; font-size: 11.5px; font-weight: 800; color: var(--saffron); background: #fff1e6; border-radius: 8px; padding: 6px; margin-top: 2px; }
+.gsf-faq-toggle {
+  display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 700;
+  color: var(--blue); cursor: pointer; background: none; border: none; padding: 0; margin-bottom: 8px;
+}
+.gsf-faq-panel { display: none; flex-direction: column; gap: 10px; background: var(--blue-light); border-radius: 10px; padding: 12px 14px; margin-bottom: 14px; }
+.gsf-faq-panel.open { display: flex; }
+.gsf-faq-item .q { font-size: 12px; font-weight: 800; color: var(--ink); margin-bottom: 3px; }
+.gsf-faq-item .a { font-size: 11.5px; color: var(--muted); line-height: 1.5; }
+.gsf-card-footer { padding: 14px 22px 22px; display: flex; flex-direction: column; gap: 8px; margin-top: auto; }
+.gsf-footer-row { display: flex; gap: 8px; }
+.gsf-btn-apply {
+  flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  background: linear-gradient(135deg, var(--blue), var(--blue3)); color: #fff; padding: 11px 14px;
+  border-radius: 10px; font-weight: 700; font-size: 12.5px; text-decoration: none; transition: var(--transition);
+}
+.gsf-btn-apply:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(24,71,212,.3); }
+.gsf-btn-notice {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  background: var(--off-white); border: 1.5px solid var(--border); color: var(--ink2);
+  padding: 11px 14px; border-radius: 10px; font-weight: 700; font-size: 12.5px; text-decoration: none; transition: var(--transition);
+}
+.gsf-btn-notice:hover { border-color: var(--blue); color: var(--blue); }
+.gsf-btn-whatsapp {
+  width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  background: linear-gradient(135deg, var(--wa), var(--wa2)); color: #fff; padding: 11px 14px;
+  border-radius: 10px; font-weight: 700; font-size: 12.5px; text-decoration: none; transition: var(--transition);
+  box-shadow: 0 4px 14px rgba(37,211,102,.3);
+}
+.gsf-btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,211,102,.45); }
+.gsf-btn-whatsapp svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+.gsf-empty { text-align: center; padding: 50px 20px; color: var(--muted); }
+.gsf-empty-icon { font-size: 38px; margin-bottom: 10px; }
+
+.gsf-loadmore-wrap { text-align: center; margin-top: 30px; }
+.gsf-loadmore {
+  display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; border-radius: 25px;
+  background: var(--white); border: 1.5px solid var(--border); color: var(--ink); font-weight: 700;
+  font-size: 13.5px; cursor: pointer; transition: var(--transition);
+}
+.gsf-loadmore:hover { border-color: var(--blue); color: var(--blue); box-shadow: var(--sh3); }
+
+/* Alerts subscribe banner */
+.gsf-alerts {
+  margin-top: 34px; background: linear-gradient(135deg, var(--ink), var(--ink2)); border-radius: var(--r);
+  padding: 26px 28px; display: flex; align-items: center; gap: 22px; flex-wrap: wrap; color: #fff;
+}
+.gsf-alerts-text { flex: 1; min-width: 220px; }
+.gsf-alerts-text h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 4px; }
+.gsf-alerts-text p { font-size: 12.5px; color: rgba(255,255,255,.7); }
+.gsf-alerts-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.gsf-alert-btn {
+  display: inline-flex; align-items: center; gap: 7px; padding: 11px 18px; border-radius: 10px;
+  font-weight: 700; font-size: 12.5px; text-decoration: none; transition: var(--transition); cursor: pointer; border: none;
+}
+.gsf-alert-btn.wa { background: var(--wa); color: #fff; }
+.gsf-alert-btn.wa:hover { background: var(--wa2); transform: translateY(-2px); }
+.gsf-alert-btn.email { background: rgba(255,255,255,.12); color: #fff; border: 1.5px solid rgba(255,255,255,.25); }
+.gsf-alert-btn.email:hover { background: rgba(255,255,255,.2); }
+
+/* Eligibility Checker Modal */
+.gsf-modal-overlay {
+  position: fixed; inset: 0; background: rgba(11,15,30,.62); backdrop-filter: blur(4px);
+  display: none; align-items: center; justify-content: center; z-index: 1001; padding: 18px;
+  opacity: 0; transition: opacity .25s ease;
+}
+.gsf-modal-overlay.show { display: flex; opacity: 1; }
+.gsf-modal {
+  background: var(--white); border-radius: 20px; width: 100%; max-width: 460px; overflow: hidden;
+  box-shadow: 0 30px 80px rgba(11,15,30,.35); transform: scale(.92) translateY(14px);
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1); max-height: 88vh; display: flex; flex-direction: column;
+}
+.gsf-modal-overlay.show .gsf-modal { transform: scale(1) translateY(0); }
+.gsf-modal-head {
+  background: linear-gradient(135deg, var(--blue), var(--blue3)); color: #fff; padding: 20px 24px; position: relative;
+}
+.gsf-modal-head h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; }
+.gsf-modal-head p { font-size: 12.5px; color: rgba(255,255,255,.8); margin-top: 4px; }
+.gsf-modal-close {
+  position: absolute; top: 14px; right: 14px; width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(255,255,255,.2); border: none; color: #fff; cursor: pointer; font-size: 15px;
+  display: flex; align-items: center; justify-content: center; transition: var(--transition);
+}
+.gsf-modal-close:hover { background: rgba(255,255,255,.35); }
+.gsf-modal-body { padding: 22px 24px; overflow-y: auto; }
+.gsf-modal-step-label { font-size: 11px; font-weight: 800; color: var(--muted2); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 12px; }
+.gsf-chip-grid { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 22px; }
+.gsf-opt-chip {
+  padding: 10px 16px; border-radius: 22px; border: 1.5px solid var(--border); background: var(--off-white);
+  font-size: 13px; font-weight: 700; color: var(--ink2); cursor: pointer; transition: var(--transition);
+}
+.gsf-opt-chip:hover { border-color: var(--blue-mid); }
+.gsf-opt-chip.selected { background: var(--blue); border-color: var(--blue); color: #fff; }
+.gsf-modal-foot { padding: 16px 24px 22px; border-top: 1px solid var(--border); }
+.gsf-modal-submit {
+  width: 100%; padding: 13px; border-radius: var(--r2); background: linear-gradient(135deg, var(--blue), var(--blue3));
+  color: #fff; font-weight: 700; font-size: 14px; border: none; cursor: pointer; transition: var(--transition);
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+}
+.gsf-modal-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(24,71,212,.35); }
+.gsf-modal-submit:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+@media (max-width: 700px) {
+  .gsf-row1 { grid-template-columns: 1fr; }
+  .gsf-grid { grid-template-columns: 1fr; }
+  .gsf-alerts { flex-direction: column; text-align: center; }
+  .gsf-alerts-btns { width: 100%; justify-content: center; }
+  .gsf-count-bar { flex-direction: column; align-items: flex-start; }
+}
 </style>
 </head>
 <body>
@@ -1478,108 +1698,109 @@ footer {
 <section class="schemes" id="schemes">
   <div class="container">
     <div class="sec-head reveal">
-      <span class="sec-label">Government Schemes</span>
+      <span class="sec-label">Government Scheme Finder</span>
       <h2 class="sec-title">Don't Miss Benefits You Deserve</h2>
-      <p class="sec-sub">We help you identify and apply for central and state government schemes you may be eligible for — at no extra cost.</p>
+      <p class="sec-sub">Select your state to discover central and state government schemes you may be eligible for — ongoing, upcoming, search, filter, save and apply, all in one place.</p>
     </div>
-    <div class="scheme-grid">
 
-      <div class="scheme-card reveal">
-        <div class="sc-header">
-          <div class="sc-logo" style="background:#dbeafe">🌾</div>
-          <div><div class="sc-title">PM Kisan Samman Nidhi</div><div class="sc-ministry">Ministry of Agriculture & Farmers Welfare</div></div>
+    <div class="gsf-banner">
+      <div class="gsf-banner-icon">🇮🇳</div>
+      <div class="gsf-banner-text">Pick your <b>state</b> below to see schemes specific to you, alongside <b>all central government schemes</b>. We help you apply for any of these at no extra cost — just ask us on WhatsApp.</div>
+    </div>
+
+    <div class="gsf-controls">
+      <div class="gsf-row1">
+        <div class="gsf-state-wrap">
+          <select class="gsf-select" id="gsfState" onchange="gsfApplyFilters()">
+            <option value="">Select Your State / UT</option>
+          </select>
         </div>
-        <div class="sc-body">
-          <p class="sc-desc">Direct benefit transfer scheme providing ₹6,000 per year to small and marginal farmers across India in three equal installments.</p>
-          <div class="sc-tags">
-            <span class="sc-tag" style="background:#dbeafe;color:#1e40af;">Farmers</span>
-            <span class="sc-tag" style="background:#dcfce7;color:#166534;">Direct Transfer</span>
-            <span class="sc-tag" style="background:#fef3c7;color:#92400e;">₹6,000/year</span>
-          </div>
-          <div class="sc-benefits">
-            <div class="sc-benefits-title">Key Benefits</div>
-            <ul>
-              <li>₹2,000 every four months directly to bank account</li>
-              <li>No repayment required — it is a grant</li>
-              <li>All eligible small & marginal farmers can apply</li>
-              <li>E-KYC mandatory to continue receiving benefits</li>
-            </ul>
-          </div>
-        </div>
-        <div class="sc-footer">
-          <button class="sc-btn-wa" onclick="applyScheme('PM Kisan Samman Nidhi')">
-            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Apply via WhatsApp
-          </button>
-          <button class="sc-btn-info" onclick="applyScheme('PM Kisan Samman Nidhi – More Info')">Learn More</button>
+        <div class="gsf-search-wrap">
+          <input type="text" class="gsf-search" id="gsfSearch" placeholder="Search schemes by name or keyword…" oninput="gsfApplyFilters()">
         </div>
       </div>
-
-      <div class="scheme-card reveal reveal-delay-1">
-        <div class="sc-header">
-          <div class="sc-logo" style="background:#dcfce7">🏥</div>
-          <div><div class="sc-title">Ayushman Bharat – PMJAY</div><div class="sc-ministry">Ministry of Health & Family Welfare</div></div>
-        </div>
-        <div class="sc-body">
-          <p class="sc-desc">World's largest government-funded health insurance scheme providing up to ₹5 lakh coverage per family per year for secondary and tertiary care hospitalization.</p>
-          <div class="sc-tags">
-            <span class="sc-tag" style="background:#dcfce7;color:#166534;">Health</span>
-            <span class="sc-tag" style="background:#dbeafe;color:#1e40af;">Insurance</span>
-            <span class="sc-tag" style="background:#f3e8ff;color:#6b21a8;">₹5 Lakh Cover</span>
-          </div>
-          <div class="sc-benefits">
-            <div class="sc-benefits-title">Key Benefits</div>
-            <ul>
-              <li>₹5 lakh health cover per family per year</li>
-              <li>Cashless treatment at empanelled hospitals</li>
-              <li>No premium payment required for beneficiaries</li>
-              <li>Covers 1,600+ medical procedures</li>
-            </ul>
-          </div>
-        </div>
-        <div class="sc-footer">
-          <button class="sc-btn-wa" onclick="applyScheme('Ayushman Bharat – PMJAY')">
-            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Apply via WhatsApp
-          </button>
-          <button class="sc-btn-info" onclick="applyScheme('Ayushman Bharat – More Info')">Learn More</button>
-        </div>
+      <div class="gsf-row2">
+        <select class="gsf-filter-select" id="gsfCategory" onchange="gsfApplyFilters()">
+          <option value="">All Categories</option>
+        </select>
+        <select class="gsf-filter-select" id="gsfLevel" onchange="gsfApplyFilters()">
+          <option value="">Central + State</option>
+          <option value="Central">Central Govt.</option>
+          <option value="State">State Govt.</option>
+        </select>
+        <select class="gsf-filter-select" id="gsfEligibility" onchange="gsfApplyFilters()">
+          <option value="">All Eligibility</option>
+        </select>
+        <button class="gsf-elig-btn" onclick="gsfOpenModal()">✅ Check My Eligibility</button>
+        <button class="gsf-saved-btn" id="gsfSavedBtn" onclick="gsfToggleSavedOnly()">🔖 My Saved (<span id="gsfSavedCount">0</span>)</button>
       </div>
+    </div>
 
-      <div class="scheme-card reveal reveal-delay-2">
-        <div class="sc-header">
-          <div class="sc-logo" style="background:#ffedd5">🏠</div>
-          <div><div class="sc-title">PM Awas Yojana (PMAY)</div><div class="sc-ministry">Ministry of Housing & Urban Affairs</div></div>
-        </div>
-        <div class="sc-body">
-          <p class="sc-desc">Government housing scheme providing financial assistance to eligible families for construction or purchase of an affordable house.</p>
-          <div class="sc-tags">
-            <span class="sc-tag" style="background:#ffedd5;color:#9a3412;">Housing</span>
-            <span class="sc-tag" style="background:#dbeafe;color:#1e40af;">Subsidy</span>
-            <span class="sc-tag" style="background:#dcfce7;color:#166534;">Urban & Rural</span>
-          </div>
-          <div class="sc-benefits">
-            <div class="sc-benefits-title">Key Benefits</div>
-            <ul>
-              <li>Up to ₹2.67 lakh interest subsidy on home loan</li>
-              <li>For EWS, LIG, and MIG categories</li>
-              <li>Priority given to women, SC/ST, and differently abled</li>
-              <li>Both urban and rural coverage available</li>
-            </ul>
-          </div>
-        </div>
-        <div class="sc-footer">
-          <button class="sc-btn-wa" onclick="applyScheme('PM Awas Yojana (PMAY)')">
-            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Apply via WhatsApp
-          </button>
-          <button class="sc-btn-info" onclick="applyScheme('PM Awas Yojana – More Info')">Learn More</button>
-        </div>
+    <div class="gsf-status-chips" id="gsfStatusChips">
+      <span class="gsf-chip active" data-status="" onclick="gsfSetStatus('', this)">All Status</span>
+      <span class="gsf-chip" data-status="open" onclick="gsfSetStatus('open', this)"><span class="dot green"></span> 🟢 Ongoing</span>
+      <span class="gsf-chip" data-status="upcoming" onclick="gsfSetStatus('upcoming', this)"><span class="dot yellow"></span> 🟡 Upcoming</span>
+      <span class="gsf-chip" data-status="closed" onclick="gsfSetStatus('closed', this)"><span class="dot red"></span> 🔴 Closed</span>
+    </div>
+
+    <div class="gsf-count-bar">
+      <div class="gsf-count-text" id="gsfCountText">Loading schemes…</div>
+    </div>
+
+    <div class="gsf-grid" id="gsfGrid"></div>
+
+    <div class="gsf-loadmore-wrap" id="gsfLoadMoreWrap" style="display:none;">
+      <button class="gsf-loadmore" onclick="gsfLoadMore()">⬇️ Load More Schemes</button>
+    </div>
+
+    <div class="gsf-alerts">
+      <div class="gsf-alerts-text">
+        <h3>🔔 Never miss a new scheme</h3>
+        <p>Subscribe and we'll personally alert you on WhatsApp or Email when a new scheme launches in your state.</p>
       </div>
-
+      <div class="gsf-alerts-btns">
+        <a href="#" id="gsfWaAlertBtn" target="_blank" rel="noopener" class="gsf-alert-btn wa">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Alerts
+        </a>
+        <a href="#" id="gsfEmailAlertBtn" class="gsf-alert-btn email">✉️ Email Alerts</a>
+      </div>
     </div>
   </div>
 </section>
+
+<!-- ═══════════════ ELIGIBILITY CHECKER MODAL ═══════════════ -->
+<div class="gsf-modal-overlay" id="gsfModalOverlay">
+  <div class="gsf-modal">
+    <div class="gsf-modal-head">
+      <button class="gsf-modal-close" onclick="gsfCloseModal()" aria-label="Close">✕</button>
+      <h3>✅ Check My Eligibility</h3>
+      <p>Answer 2 quick questions to see schemes that match you.</p>
+    </div>
+    <div class="gsf-modal-body">
+      <div class="gsf-modal-step-label">Step 1 — I am a...</div>
+      <div class="gsf-chip-grid" id="gsfModalWho">
+        <span class="gsf-opt-chip" data-val="Student">🎓 Student</span>
+        <span class="gsf-opt-chip" data-val="Farmer">🌾 Farmer</span>
+        <span class="gsf-opt-chip" data-val="Woman">👩 Woman</span>
+        <span class="gsf-opt-chip" data-val="Youth">🧑 Youth</span>
+        <span class="gsf-opt-chip" data-val="Senior Citizen">👴 Senior Citizen</span>
+        <span class="gsf-opt-chip" data-val="Entrepreneur">💼 Entrepreneur</span>
+        <span class="gsf-opt-chip" data-val="Worker">🛠️ Worker</span>
+        <span class="gsf-opt-chip" data-val="SC/ST/OBC">🤝 SC/ST/OBC</span>
+        <span class="gsf-opt-chip" data-val="Anyone">👥 Anyone / General</span>
+      </div>
+      <div class="gsf-modal-step-label">Step 2 — Your State / UT</div>
+      <div class="gsf-chip-grid">
+        <select class="gsf-filter-select" id="gsfModalState" style="width:100%;"></select>
+      </div>
+    </div>
+    <div class="gsf-modal-foot">
+      <button class="gsf-modal-submit" id="gsfModalSubmit" onclick="gsfSubmitEligibility()" disabled>🔍 Show Matching Schemes</button>
+    </div>
+  </div>
+</div>
+
 
 <!-- ═══════════════ WHY CHOOSE US ═══════════════ -->
 <section class="why" id="why">
@@ -2030,6 +2251,737 @@ footer {
 </a>
 
 <script>
+/* ═══════════════════════════════════════════════════════════
+   GOVERNMENT SCHEME FINDER — DATA + ENGINE
+   Data manually researched & verified from official sources
+   (pmkisan.gov.in, pmvishwakarma.gov.in, pmjay.gov.in, pmay-urban.gov.in,
+   mysy.gujarat.gov.in, emahilakalyan.gujarat.gov.in, etc.)
+   Last verified: 29 Jun 2026 — always confirm on the official portal.
+═══════════════════════════════════════════════════════════ */
+const GSF_VERIFIED_DATE = '29 Jun 2026';
+
+const GSF_STATES = [
+  "Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat",
+  "Haryana","Himachal Pradesh","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra",
+  "Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim",
+  "Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal",
+  "Andaman and Nicobar Islands","Chandigarh","Dadra and Nagar Haveli and Daman and Diu",
+  "Delhi (NCT)","Jammu and Kashmir","Ladakh","Lakshadweep","Puducherry"
+];
+
+const GSF_CATEGORIES = ["Agriculture","Business","Education","Women","Students","Senior Citizens","Health","Employment","Housing"];
+
+const GSF_ELIGIBILITY = ["Student","Farmer","Women","Youth","SC/ST/OBC","Senior Citizen","Entrepreneur","Worker","Anyone"];
+
+const GSF_WHO_MAP = { Woman: 'Women' }; // maps eligibility-quiz chip values to scheme eligibility tags
+
+const GSF_CATEGORY_STYLE = {
+  Agriculture:      { bg: '#dcfce7', icon: '🌾' },
+  Business:         { bg: '#dbeafe', icon: '💼' },
+  Education:        { bg: '#f3e8ff', icon: '🎓' },
+  Women:            { bg: '#fce7f3', icon: '👩' },
+  Students:         { bg: '#f3e8ff', icon: '📚' },
+  'Senior Citizens': { bg: '#e0e7ff', icon: '👴' },
+  Health:           { bg: '#fee2e2', icon: '🏥' },
+  Employment:       { bg: '#ffedd5', icon: '🛠️' },
+  Housing:          { bg: '#fef3c7', icon: '🏠' }
+};
+
+const GSF_SCHEMES = [
+  {
+    id: 'pmkisan',
+    name: 'PM-KISAN Samman Nidhi',
+    ministry: 'Ministry of Agriculture & Farmers Welfare (Govt. of India)',
+    level: 'Central',
+    state: 'All',
+    category: 'Agriculture',
+    eligibilityTags: ['Farmer'],
+    desc: 'Direct income support of ₹6,000 per year to eligible landholding farmer families, paid in 3 equal instalments of ₹2,000 straight to their bank account.',
+    eligibilityText: 'Landholding farmer family as per state land records, with Aadhaar-based eKYC completed. Excludes institutional landholders, constitutional post holders, serving/retired government employees (except Class IV/Group D), pensioners drawing ₹10,000+/month, and income-tax payers.',
+    documents: ['Aadhaar Card','Bank Passbook (Aadhaar-linked)','Land Ownership Record','Mobile Number'],
+    benefits: '₹6,000/year in 3 instalments of ₹2,000 via Direct Benefit Transfer (DBT)',
+    status: 'open',
+    startDate: null, startLabel: 'Rolling — open all year',
+    lastDate: null, lastLabel: 'No fixed deadline',
+    launchDate: '2019-02-24',
+    applyUrl: 'https://pmkisan.gov.in/',
+    noticeUrl: 'https://pmkisan.gov.in/',
+    faqs: [
+      { q: 'Is there a last date to apply?', a: 'No — PM-KISAN has rolling, year-round registration through the official portal or your nearest CSC.' },
+      { q: 'How many instalments have been released so far?', a: 'The 23rd instalment (₹2,000) was released on 20 June 2026, taking the scheme past ₹4.4 lakh crore disbursed since 2019.' }
+    ]
+  },
+  {
+    id: 'pmvishwakarma',
+    name: 'PM Vishwakarma Yojana',
+    ministry: 'Ministry of Micro, Small & Medium Enterprises (MoMSME)',
+    level: 'Central',
+    state: 'All',
+    category: 'Business',
+    eligibilityTags: ['Entrepreneur','Worker','SC/ST/OBC'],
+    desc: 'End-to-end support for traditional artisans & craftspeople across 18 trades — formal recognition, skill training with a stipend, a toolkit grant, and collateral-free loans.',
+    eligibilityText: 'Indian citizen aged 18+, engaged in one of 18 specified family-based trades (carpenter, blacksmith, goldsmith, potter, tailor, cobbler, mason, barber, washerman, toy maker, etc.). One beneficiary per family; not availed a similar self-employment credit scheme (PMEGP/PM SVANidhi/Mudra) in the last 5 years.',
+    documents: ['Aadhaar Card','Mobile Number','Bank Account Details','Ration Card (or family Aadhaar)','Trade Self-Declaration'],
+    benefits: 'PM Vishwakarma ID & Certificate + ₹15,000 toolkit e-voucher + skill training (₹500/day stipend) + collateral-free loan up to ₹3 lakh at 5% interest',
+    status: 'open',
+    startDate: null, startLabel: 'Rolling — apply via any CSC',
+    lastDate: '2028-03-31', lastLabel: 'Scheme runs through FY 2027-28',
+    launchDate: '2023-09-17',
+    applyUrl: 'https://pmvishwakarma.gov.in/',
+    noticeUrl: 'https://pmvishwakarma.gov.in/',
+    faqs: [
+      { q: 'Which trades are covered?', a: '18 trades including carpenter, blacksmith, goldsmith, potter, mason, tailor, cobbler, barber, washerman, boat maker, locksmith and toy maker.' },
+      { q: 'Can I apply through a CSC?', a: 'Yes — enrolment uses Aadhaar-based biometric authentication and can be completed at any Common Service Centre, including ours.' }
+    ]
+  },
+  {
+    id: 'ayushmanbharat',
+    name: 'Ayushman Bharat (PM-JAY)',
+    ministry: 'National Health Authority, Ministry of Health & Family Welfare',
+    level: 'Central',
+    state: 'All',
+    category: 'Health',
+    eligibilityTags: ['Senior Citizen','Anyone'],
+    desc: 'Cashless health cover of ₹5 lakh per family per year for secondary & tertiary hospitalisation at empanelled hospitals. Citizens aged 70+ get universal cover under Ayushman Vay Vandana, regardless of income.',
+    eligibilityText: 'Families identified under SECC 2011 deprivation/occupational criteria, OR any individual aged 70 years or above (irrespective of income) under the Vay Vandana extension.',
+    documents: ['Aadhaar Card','Ration Card / Family ID','Mobile Number'],
+    benefits: 'Cashless hospitalisation cover up to ₹5,00,000 per family per year',
+    status: 'open',
+    startDate: null, startLabel: 'Rolling — apply anytime',
+    lastDate: null, lastLabel: 'No fixed deadline',
+    launchDate: '2018-09-23',
+    applyUrl: 'https://pmjay.gov.in/',
+    noticeUrl: 'https://pmjay.gov.in/',
+    faqs: [
+      { q: 'Is there an income limit?', a: 'The base scheme uses SECC 2011 deprivation criteria rather than a fixed income cut-off. Anyone aged 70+ is covered separately, regardless of income.' },
+      { q: 'How do I check if I am already covered?', a: 'Check eligibility and download your Ayushman card on pmjay.gov.in, or visit your nearest CSC for assistance.' }
+    ]
+  },
+  {
+    id: 'pmay',
+    name: 'PM Awas Yojana (Urban 2.0 / Gramin)',
+    ministry: 'Ministry of Housing & Urban Affairs / Ministry of Rural Development',
+    level: 'Central',
+    state: 'All',
+    category: 'Housing',
+    eligibilityTags: ['Anyone'],
+    desc: 'Financial assistance to construct or buy a pucca house — for houseless families and those in kutcha/dilapidated houses, across both rural and urban India.',
+    eligibilityText: 'EWS/LIG/MIG families (urban) or houseless/kutcha-house families (rural) with no pucca house anywhere in India. Should not have availed any government housing scheme benefit in the last 20 years.',
+    documents: ['Aadhaar Card (all family members)','Income Certificate','Bank Account Details','Caste Certificate (if applicable)','Land/Property Document (if any)'],
+    benefits: 'Central assistance/interest subsidy up to ₹2.5 lakh (urban ISS) or ₹1.2 lakh (rural) for house construction or purchase',
+    status: 'open',
+    startDate: null, startLabel: 'Rolling — applications open',
+    lastDate: null, lastLabel: 'No fixed deadline',
+    launchDate: '2024-09-01',
+    applyUrl: 'https://pmay-urban.gov.in/',
+    noticeUrl: 'https://pmay-urban.gov.in/',
+    faqs: [
+      { q: 'Can I apply if I already own a kutcha house?', a: 'Yes — families living in a kutcha or dilapidated house with no pucca house anywhere in India are eligible.' },
+      { q: 'Where do rural applicants apply?', a: 'Rural beneficiaries can apply/check status through the PMAY-Gramin portal (pmayg.nic.in) or via their Gram Panchayat / nearest CSC.' }
+    ]
+  },
+  {
+    id: 'sukanya',
+    name: 'Sukanya Samriddhi Yojana',
+    ministry: 'Ministry of Finance — National Savings Institute',
+    level: 'Central',
+    state: 'All',
+    category: 'Women',
+    eligibilityTags: ['Women'],
+    desc: 'A high-interest small savings scheme for the girl child — parents/guardians can open an account and build a tax-free corpus for her education or marriage.',
+    eligibilityText: 'Account can be opened by parents/legal guardian for a girl child below 10 years of age. Maximum 2 accounts per family (3 in case of twins/triplets in 2nd birth).',
+    documents: ['Girl Child Birth Certificate','Aadhaar Card (Guardian & Child)','Address Proof of Guardian'],
+    benefits: 'Attractive government-fixed interest rate, fully tax-exempt (EEE) maturity at age 21 or marriage after 18',
+    status: 'open',
+    startDate: null, startLabel: 'Rolling — open at any post office / bank',
+    lastDate: null, lastLabel: 'No fixed deadline',
+    launchDate: '2015-01-22',
+    applyUrl: 'https://www.nsiindia.gov.in/',
+    noticeUrl: 'https://www.nsiindia.gov.in/',
+    faqs: [
+      { q: 'Where can I open this account?', a: 'At any India Post office or authorised bank branch with the required documents and an initial deposit of ₹250 or more.' },
+      { q: 'Can I withdraw before maturity?', a: 'Partial withdrawal (up to 50%) is allowed once the girl turns 18, for higher education or marriage expenses.' }
+    ]
+  },
+  {
+    id: 'mudra',
+    name: 'Pradhan Mantri MUDRA Yojana',
+    ministry: 'Department of Financial Services, Ministry of Finance',
+    level: 'Central',
+    state: 'All',
+    category: 'Business',
+    eligibilityTags: ['Entrepreneur'],
+    desc: 'Collateral-free loans up to ₹20 lakh for non-corporate, non-farm small/micro businesses — split into Shishu, Kishor, Tarun & Tarun Plus slabs.',
+    eligibilityText: 'Any Indian citizen with a viable business plan for a non-farm income-generating micro/small enterprise (manufacturing, trading or services).',
+    documents: ['Aadhaar & PAN Card','Business Plan / Proof of Business','Bank Account Details','Passport-size Photographs'],
+    benefits: 'Collateral-free loans: Shishu (up to ₹50,000), Kishor (₹50,000–5 lakh), Tarun (₹5–10 lakh), Tarun Plus (₹10–20 lakh)',
+    status: 'open',
+    startDate: null, startLabel: 'Rolling — apply at any bank/NBFC/MFI',
+    lastDate: null, lastLabel: 'No fixed deadline',
+    launchDate: '2015-04-08',
+    applyUrl: 'https://www.mudra.org.in/',
+    noticeUrl: 'https://www.mudra.org.in/',
+    faqs: [
+      { q: 'Do I need collateral?', a: 'No — MUDRA loans are collateral-free for eligible micro and small enterprises.' },
+      { q: 'Where do I apply?', a: 'At any participating public/private bank, RRB, NBFC or microfinance institution. We can help you with the paperwork.' }
+    ]
+  },
+  {
+    id: 'standupindia',
+    name: 'Stand-Up India',
+    ministry: 'Department of Financial Services, Ministry of Finance',
+    level: 'Central',
+    state: 'All',
+    category: 'Business',
+    eligibilityTags: ['Women','SC/ST/OBC','Entrepreneur'],
+    desc: 'Bank loans between ₹10 lakh and ₹1 crore for setting up a new greenfield enterprise, specifically targeted at women and SC/ST entrepreneurs.',
+    eligibilityText: 'Women entrepreneurs and SC/ST entrepreneurs above 18 years, setting up a new (greenfield) enterprise in manufacturing, services, trading or allied agri-activities.',
+    documents: ['Aadhaar & PAN Card','Caste Certificate (if applicable)','Detailed Project Report','Bank Account & Address Proof'],
+    benefits: 'Composite bank loan between ₹10 lakh – ₹1 crore covering 75% of the project cost',
+    status: 'open',
+    startDate: null, startLabel: 'Rolling — apply at any scheduled bank',
+    lastDate: null, lastLabel: 'No fixed deadline',
+    launchDate: '2016-04-05',
+    applyUrl: 'https://www.standupmitra.in/',
+    noticeUrl: 'https://www.standupmitra.in/',
+    faqs: [
+      { q: 'Is collateral required?', a: 'Loans typically come with the CGTMSE/CGFSI credit guarantee cover; collateral requirements vary by lending bank and loan amount.' },
+      { q: 'Can a first-time entrepreneur apply?', a: 'Yes — Stand-Up India is specifically designed to support first-time women and SC/ST entrepreneurs setting up a new enterprise.' }
+    ]
+  },
+  {
+    id: 'nsp',
+    name: 'National Scholarship Portal — Central Sector Scholarships',
+    ministry: 'Ministry of Education / Various Nodal Ministries',
+    level: 'Central',
+    state: 'All',
+    category: 'Education',
+    eligibilityTags: ['Student'],
+    desc: 'A single-window portal hosting 80+ Central & State scholarship schemes for school and college students, covering tuition fees, maintenance allowance and more.',
+    eligibilityText: 'Varies by individual scholarship scheme — generally Indian students enrolled in a recognised school/college/university, often with income and merit criteria.',
+    documents: ['Aadhaar Card','Bank Account Details','Latest Mark Sheet','Income Certificate','Bonafide Certificate from Institution'],
+    benefits: 'Tuition fee reimbursement, maintenance allowance and book grants — amount varies by individual scholarship',
+    status: 'upcoming',
+    startDate: '2026-07-15', startLabel: 'Mid-July 2026 (tentative — confirmed dates announced annually)',
+    lastDate: '2026-10-31', lastLabel: 'Late October 2026 (tentative, varies by scheme)',
+    launchDate: '2015-07-01',
+    applyUrl: 'https://scholarships.gov.in/',
+    noticeUrl: 'https://scholarships.gov.in/',
+    faqs: [
+      { q: 'Do exact dates change every year?', a: 'Yes — each scholarship under NSP has its own opening and closing dates set annually. Always confirm the current cycle on scholarships.gov.in.' },
+      { q: 'Can I apply for more than one scholarship?', a: 'Generally no — most NSP schemes don\u2019t allow double benefit for the same purpose; check individual scheme rules.' }
+    ]
+  },
+  {
+    id: 'apy',
+    name: 'Atal Pension Yojana',
+    ministry: 'Pension Fund Regulatory and Development Authority (PFRDA)',
+    level: 'Central',
+    state: 'All',
+    category: 'Employment',
+    eligibilityTags: ['Worker','Youth','Anyone'],
+    desc: 'A guaranteed monthly pension scheme for unorganised-sector workers, with pension amount fixed between ₹1,000–₹5,000 based on contribution.',
+    eligibilityText: 'Indian citizen aged 18–40 years with a savings bank/post office account, primarily targeted at unorganised sector workers without any other statutory social security.',
+    documents: ['Aadhaar Card','Savings Bank/Post Office Account','Mobile Number'],
+    benefits: 'Guaranteed monthly pension of ₹1,000 / ₹2,000 / ₹3,000 / ₹4,000 / ₹5,000 from age 60, based on contribution amount',
+    status: 'open',
+    startDate: null, startLabel: 'Rolling — join between age 18–40',
+    lastDate: null, lastLabel: 'No fixed deadline',
+    launchDate: '2015-05-09',
+    applyUrl: 'https://npscra.nsdl.co.in/',
+    noticeUrl: 'https://npscra.nsdl.co.in/',
+    faqs: [
+      { q: 'What happens if I miss a contribution?', a: 'A small penalty is added to subsequent contributions; the account may be frozen and later deactivated/closed if dues remain unpaid for a long period.' },
+      { q: 'Can I open this through a CSC?', a: 'Yes — most banks and CSCs can help you open and manage an APY account.' }
+    ]
+  },
+  {
+    id: 'svanidhi',
+    name: 'PM SVANidhi',
+    ministry: 'Ministry of Housing & Urban Affairs',
+    level: 'Central',
+    state: 'All',
+    category: 'Business',
+    eligibilityTags: ['Entrepreneur'],
+    desc: 'Collateral-free working-capital loans for street vendors, starting at ₹10,000 and going up to ₹50,000 across three progressive loan cycles.',
+    eligibilityText: 'Street vendors in possession of a Certificate of Vending / Identity Card issued by Urban Local Bodies, or identified through an ongoing survey.',
+    documents: ['Aadhaar Card','Certificate of Vending / Vendor ID','Bank Account Details'],
+    benefits: 'Collateral-free loans: ₹10,000 (1st cycle) → ₹20,000 (2nd) → ₹50,000 (3rd), with interest subsidy on timely repayment',
+    status: 'open',
+    startDate: null, startLabel: 'Rolling — apply via ULB / lending institution',
+    lastDate: null, lastLabel: 'No fixed deadline',
+    launchDate: '2020-06-01',
+    applyUrl: 'https://pmsvanidhi.mohua.gov.in/',
+    noticeUrl: 'https://pmsvanidhi.mohua.gov.in/',
+    faqs: [
+      { q: 'I don\u2019t have a vending certificate — can I still apply?', a: 'Yes, vendors identified through a fresh ULB survey or provisional certificate of vending can also apply.' },
+      { q: 'Is there an interest subsidy?', a: 'Yes — a 7% annual interest subsidy is credited quarterly for vendors who repay on time.' }
+    ]
+  },
+
+  /* ───────────── GUJARAT STATE SCHEMES ───────────── */
+  {
+    id: 'vahlidikri',
+    name: 'Vahli Dikri Yojana',
+    ministry: 'Women & Child Development Department, Govt. of Gujarat',
+    level: 'State',
+    state: 'Gujarat',
+    category: 'Women',
+    eligibilityTags: ['Women'],
+    desc: "Gujarat's flagship girl-child welfare scheme — financial assistance to parents in 3 stages to encourage girls' education and prevent child marriage.",
+    eligibilityText: 'Resident of Gujarat; family annual income up to ₹2 lakh; benefit limited to the first 2 daughters per family.',
+    documents: ['Birth Certificate of Girl Child','Aadhaar Card (Parent & Child)','Income Certificate','Bank Passbook'],
+    benefits: 'Total ₹1,10,000 — ₹4,000 at Class 1 enrolment + ₹6,000 at Class 9 enrolment + ₹1,00,000 at age 18 (for higher education/marriage)',
+    status: 'open',
+    startDate: null, startLabel: 'Rolling — apply within window after birth/enrolment',
+    lastDate: null, lastLabel: 'No fixed deadline',
+    launchDate: '2019-08-02',
+    applyUrl: 'https://emahilakalyan.gujarat.gov.in/',
+    noticeUrl: 'https://emahilakalyan.gujarat.gov.in/',
+    faqs: [
+      { q: 'How many daughters can benefit per family?', a: 'A maximum of the first 2 daughters in a family are eligible under this scheme.' },
+      { q: 'Can I apply online?', a: 'Yes, through the e-Mahila Kalyan portal of the Gujarat Women & Child Development Department, or with our help at the CSC.' }
+    ]
+  },
+  {
+    id: 'mysy',
+    name: 'Mukhyamantri Yuva Swavalamban Yojana (MYSY)',
+    ministry: 'Education Department, Govt. of Gujarat',
+    level: 'State',
+    state: 'Gujarat',
+    category: 'Education',
+    eligibilityTags: ['Student'],
+    desc: "Gujarat's flagship higher-education support scheme — fee reimbursement and allowances for students pursuing professional/degree courses.",
+    eligibilityText: 'Gujarat-domiciled student with family annual income up to ₹6 lakh, scoring 80%+ in Class 10 or 65%+ in Class 12, pursuing engineering, medical, pharmacy, architecture, MBA, MCA, nursing, diploma or similar professional courses.',
+    documents: ['Class 10/12 Mark Sheet','Income Certificate','Aadhaar Card','Admission/Bonafide Certificate','Bank Passbook'],
+    benefits: 'Fee reimbursement up to ₹2,00,000/year + ₹1,200/month hostel allowance + ₹500/month exam fee support',
+    status: 'open',
+    startDate: null, startLabel: 'Opens after Class 10/12 results each year',
+    lastDate: null, lastLabel: 'Check current-year deadline on portal',
+    launchDate: '2015-08-01',
+    applyUrl: 'https://mysy.gujarat.gov.in/',
+    noticeUrl: 'https://mysy.gujarat.gov.in/',
+    faqs: [
+      { q: 'Is this scheme open to all categories?', a: 'Yes — MYSY covers SC/ST/OBC/EWS/General category students who meet the marks and income criteria.' },
+      { q: 'Does it cover hostel costs?', a: 'Yes — eligible hostellers receive an additional ₹1,200/month accommodation allowance.' }
+    ]
+  },
+  {
+    id: 'namolaxmi',
+    name: 'Namo Laxmi Yojana',
+    ministry: 'Education Department, Govt. of Gujarat',
+    level: 'State',
+    state: 'Gujarat',
+    category: 'Students',
+    eligibilityTags: ['Student','Women'],
+    desc: 'A scholarship for girl students of Gujarat studying in Class 9 to 12 in government and grant-in-aid schools, to reduce drop-out and boost secondary education.',
+    eligibilityText: 'Girl student of Gujarat studying in Class 9–12 in a government/grant-in-aid school.',
+    documents: ['School Bonafide Certificate','Aadhaar Card','Bank Passbook of Student/Guardian'],
+    benefits: '₹50,000 total over 4 years — ₹10,000/year (Class 9–10) + ₹15,000/year (Class 11–12)',
+    status: 'open',
+    startDate: null, startLabel: 'Disbursed each academic year automatically',
+    lastDate: null, lastLabel: 'No separate application — school-linked',
+    launchDate: '2024-02-02',
+    applyUrl: 'https://namo-laxmi.gujarat.gov.in/',
+    noticeUrl: 'https://namo-laxmi.gujarat.gov.in/',
+    faqs: [
+      { q: 'Can this be combined with other scholarships?', a: 'Yes — it can be combined with schemes like Namo Saraswati Vigyan Sadhana for science-stream girl students.' }
+    ]
+  },
+  {
+    id: 'manavgarima',
+    name: 'Manav Garima Yojana',
+    ministry: 'Social Justice & Empowerment Department, Govt. of Gujarat',
+    level: 'State',
+    state: 'Gujarat',
+    category: 'Business',
+    eligibilityTags: ['SC/ST/OBC','Entrepreneur'],
+    desc: 'Provides a toolkit grant and support for self-employment to economically backward artisans and small traders belonging to SC/ST/OBC communities in Gujarat.',
+    eligibilityText: 'Gujarat resident from SC/ST/OBC/economically backward category, engaged in a traditional trade or wanting to start small self-employment.',
+    documents: ['Caste Certificate','Aadhaar Card','Income Certificate','Trade Proof (if applicable)'],
+    benefits: 'Toolkit assistance up to ₹4,000 + support for self-employment setup',
+    status: 'open',
+    startDate: null, startLabel: 'Rolling — apply via e-Samaj Kalyan portal',
+    lastDate: null, lastLabel: 'No fixed deadline',
+    launchDate: '2017-01-01',
+    applyUrl: 'https://esamajkalyan.gujarat.gov.in/',
+    noticeUrl: 'https://esamajkalyan.gujarat.gov.in/',
+    faqs: [
+      { q: 'Which trades are covered?', a: 'Common trades include tailoring, carpentry, beauty parlour, vegetable vending, and other small self-employment activities — check the portal for the full list.' }
+    ]
+  },
+  {
+    id: 'mahilautkarsh',
+    name: 'Mukhyamantri Mahila Utkarsh Yojana',
+    ministry: 'Gujarat Livelihood Promotion Company, Govt. of Gujarat',
+    level: 'State',
+    state: 'Gujarat',
+    category: 'Women',
+    eligibilityTags: ['Women','Entrepreneur'],
+    desc: 'Interest-free loans to women members of registered Self-Help Groups (SHGs) in Gujarat, to boost women-led micro-enterprise and household income.',
+    eligibilityText: 'Woman member of a registered Self-Help Group (SHG) in Gujarat.',
+    documents: ['Aadhaar Card','SHG Membership Proof','Bank Account Details'],
+    benefits: 'Interest-free loan of up to ₹1,00,000 per eligible SHG member',
+    status: 'open',
+    startDate: null, startLabel: 'Rolling — apply through your SHG',
+    lastDate: null, lastLabel: 'No fixed deadline',
+    launchDate: '2020-02-22',
+    applyUrl: 'https://gujaratindia.gov.in/',
+    noticeUrl: 'https://gujaratindia.gov.in/',
+    faqs: [
+      { q: 'How do I join an SHG to become eligible?', a: 'Contact your local Gujarat Livelihood Promotion Company (GLPC) office or Gram Panchayat to join or form a registered SHG.' }
+    ]
+  },
+  {
+    id: 'namosaraswati',
+    name: 'Namo Saraswati Vigyan Sadhana Yojana',
+    ministry: 'Education Department, Govt. of Gujarat',
+    level: 'State',
+    state: 'Gujarat',
+    category: 'Education',
+    eligibilityTags: ['Student','Women'],
+    desc: 'Encourages girl students of Gujarat to pursue Science stream in Class 11–12 with a dedicated annual scholarship.',
+    eligibilityText: 'Girl student of Gujarat enrolled in Science stream, Class 11 or 12.',
+    documents: ['School Bonafide Certificate','Class 10 Mark Sheet','Aadhaar Card','Bank Passbook'],
+    benefits: '₹10,000/year for Class 11 + ₹15,000/year for Class 12 (Science stream girl students)',
+    status: 'open',
+    startDate: null, startLabel: 'Opens each academic year after admission',
+    lastDate: null, lastLabel: 'Check current-year deadline on portal',
+    launchDate: '2024-02-02',
+    applyUrl: 'https://digitalgujarat.gov.in/',
+    noticeUrl: 'https://digitalgujarat.gov.in/',
+    faqs: [
+      { q: 'Can this be combined with Namo Laxmi Yojana?', a: 'Yes — a Science-stream girl in Class 11/12 can receive both Namo Laxmi and Namo Saraswati Vigyan Sadhana benefits together.' }
+    ]
+  },
+  {
+    id: 'namokaushalya',
+    name: 'Namo Kaushalya Lakshmi Yojana',
+    ministry: 'Education / Technical Education Department, Govt. of Gujarat',
+    level: 'State',
+    state: 'Gujarat',
+    category: 'Education',
+    eligibilityTags: ['Student','Women'],
+    desc: 'A newly announced scheme to support girl students enrolled in ITI (Industrial Training Institute) courses, promoting skill & technical education among young women in Gujarat.',
+    eligibilityText: 'Girl student of Gujarat enrolled in a recognised ITI course (exact criteria to be notified on scheme rollout).',
+    documents: ['ITI Admission/Bonafide Certificate','Aadhaar Card','Bank Passbook (exact list to be confirmed on rollout)'],
+    benefits: 'Financial support for girl ITI students to encourage technical/skill education (amount to be officially notified)',
+    status: 'upcoming',
+    startDate: null, startLabel: 'Launch details awaited — announced in Gujarat Budget 2026-27',
+    lastDate: null, lastLabel: 'Not yet notified',
+    launchDate: '2026-02-20',
+    applyUrl: 'https://digitalgujarat.gov.in/',
+    noticeUrl: 'https://digitalgujarat.gov.in/',
+    faqs: [
+      { q: 'Has this scheme launched yet?', a: 'It was announced in the Gujarat Budget 2026-27 and is expected to roll out later in the year. We will update this page as soon as the official notification is issued.' }
+    ]
+  },
+  {
+    id: 'gangaswaroopa',
+    name: 'Ganga Swaroopa Arthik Sahay Yojana',
+    ministry: 'Social Justice & Empowerment Department, Govt. of Gujarat',
+    level: 'State',
+    state: 'Gujarat',
+    category: 'Senior Citizens',
+    eligibilityTags: ['Women','Senior Citizen'],
+    desc: 'Monthly financial assistance (widow pension) for widowed women in Gujarat to support their basic livelihood needs.',
+    eligibilityText: 'Widowed woman resident of Gujarat, meeting the scheme\u2019s age and income criteria as notified by the department.',
+    documents: ['Husband\u2019s Death Certificate','Aadhaar Card','Income Certificate','Bank Passbook'],
+    benefits: 'Monthly financial assistance of ₹1,250 to eligible widowed women',
+    status: 'open',
+    startDate: null, startLabel: 'Rolling — apply via e-Samaj Kalyan portal',
+    lastDate: null, lastLabel: 'No fixed deadline',
+    launchDate: '2019-01-01',
+    applyUrl: 'https://esamajkalyan.gujarat.gov.in/',
+    noticeUrl: 'https://esamajkalyan.gujarat.gov.in/',
+    faqs: [
+      { q: 'Is there an income limit?', a: 'Yes — an income ceiling applies as notified by the Social Justice & Empowerment Department. We can help you check current criteria at our centre.' }
+    ]
+  }
+];
+
+/* ───────────── ENGINE STATE ───────────── */
+let gsfSavedIds = new Set();
+try { gsfSavedIds = new Set(JSON.parse(localStorage.getItem('gsf_saved_schemes') || '[]')); } catch (e) {}
+
+const gsfFilterState = {
+  state: '', category: '', level: '', eligibility: '', status: '', search: '',
+  savedOnly: false, visibleCount: 6, modalWho: null, modalState: ''
+};
+
+/* ───────────── HELPERS ───────────── */
+function gsfFormatDate(d) {
+  if (!d) return '';
+  const dt = new Date(d + 'T00:00:00');
+  return dt.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+function gsfEffectiveStatus(scheme) {
+  const now = new Date();
+  if (scheme.lastDate && now > new Date(scheme.lastDate + 'T23:59:59')) return 'closed';
+  if (scheme.status === 'upcoming' && scheme.startDate && now >= new Date(scheme.startDate + 'T00:00:00')) return 'open';
+  return scheme.status;
+}
+function gsfIsNew(scheme) {
+  if (!scheme.launchDate) return false;
+  const days = Math.floor((new Date() - new Date(scheme.launchDate + 'T00:00:00')) / 86400000);
+  return days >= 0 && days <= 180;
+}
+function gsfCountdownHTML(scheme, effStatus) {
+  const now = new Date();
+  if (effStatus === 'upcoming' && scheme.startDate) {
+    const days = Math.ceil((new Date(scheme.startDate + 'T00:00:00') - now) / 86400000);
+    if (days > 0) return `🕐 Opens in <b>${days} day${days !== 1 ? 's' : ''}</b>`;
+  }
+  if (effStatus === 'open' && scheme.lastDate) {
+    const days = Math.ceil((new Date(scheme.lastDate + 'T00:00:00') - now) / 86400000);
+    if (days > 0 && days <= 60) return `⏳ <b>${days} day${days !== 1 ? 's' : ''} left</b> to apply`;
+  }
+  return '';
+}
+function gsfEsc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+/* ───────────── INIT / POPULATE CONTROLS ───────────── */
+function gsfInit() {
+  const stateSel = document.getElementById('gsfState');
+  const modalStateSel = document.getElementById('gsfModalState');
+  const catSel = document.getElementById('gsfCategory');
+  const eligSel = document.getElementById('gsfEligibility');
+  if (!stateSel || !catSel || !eligSel) return;
+
+  GSF_STATES.forEach(s => {
+    stateSel.insertAdjacentHTML('beforeend', `<option value="${gsfEsc(s)}">${gsfEsc(s)}</option>`);
+  });
+  if (modalStateSel) {
+    modalStateSel.insertAdjacentHTML('beforeend', `<option value="" disabled selected>Select State / UT</option>`);
+    GSF_STATES.forEach(s => {
+      modalStateSel.insertAdjacentHTML('beforeend', `<option value="${gsfEsc(s)}">${gsfEsc(s)}</option>`);
+    });
+    modalStateSel.addEventListener('change', () => {
+      gsfFilterState.modalState = modalStateSel.value;
+      gsfUpdateModalSubmit();
+    });
+  }
+  GSF_CATEGORIES.forEach(c => {
+    catSel.insertAdjacentHTML('beforeend', `<option value="${gsfEsc(c)}">${gsfEsc(c)}</option>`);
+  });
+  GSF_ELIGIBILITY.forEach(e => {
+    eligSel.insertAdjacentHTML('beforeend', `<option value="${gsfEsc(e)}">${gsfEsc(e)}</option>`);
+  });
+
+  document.querySelectorAll('.gsf-opt-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.gsf-opt-chip').forEach(c => c.classList.remove('selected'));
+      chip.classList.add('selected');
+      gsfFilterState.modalWho = chip.getAttribute('data-val');
+      gsfUpdateModalSubmit();
+    });
+  });
+
+  gsfUpdateAlertLinks();
+  gsfRenderGrid();
+}
+
+/* ───────────── FILTER LOGIC ───────────── */
+function gsfApplyFilters() {
+  gsfFilterState.state = document.getElementById('gsfState').value;
+  gsfFilterState.search = document.getElementById('gsfSearch').value.trim().toLowerCase();
+  gsfFilterState.category = document.getElementById('gsfCategory').value;
+  gsfFilterState.level = document.getElementById('gsfLevel').value;
+  gsfFilterState.eligibility = document.getElementById('gsfEligibility').value;
+  gsfFilterState.visibleCount = 6;
+  gsfUpdateAlertLinks();
+  gsfRenderGrid();
+}
+function gsfSetStatus(val, el) {
+  gsfFilterState.status = val;
+  gsfFilterState.visibleCount = 6;
+  document.querySelectorAll('.gsf-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  gsfRenderGrid();
+}
+function gsfToggleSavedOnly() {
+  gsfFilterState.savedOnly = !gsfFilterState.savedOnly;
+  gsfFilterState.visibleCount = 6;
+  document.getElementById('gsfSavedBtn').classList.toggle('active', gsfFilterState.savedOnly);
+  gsfRenderGrid();
+}
+function gsfMatchesFilters(scheme) {
+  const fs = gsfFilterState;
+  if (scheme.level === 'State' && fs.state && scheme.state !== fs.state) return false;
+  if (scheme.level === 'State' && !fs.state) return false;
+  if (fs.category && scheme.category !== fs.category) return false;
+  if (fs.level && scheme.level !== fs.level) return false;
+  if (fs.eligibility && !scheme.eligibilityTags.includes(fs.eligibility)) return false;
+  const effStatus = gsfEffectiveStatus(scheme);
+  if (fs.status && effStatus !== fs.status) return false;
+  if (fs.savedOnly && !gsfSavedIds.has(scheme.id)) return false;
+  if (fs.search) {
+    const hay = (scheme.name + ' ' + scheme.ministry + ' ' + scheme.desc + ' ' + scheme.category).toLowerCase();
+    if (!hay.includes(fs.search)) return false;
+  }
+  return true;
+}
+
+/* ───────────── RENDER ───────────── */
+function gsfCardHTML(scheme) {
+  const effStatus = gsfEffectiveStatus(scheme);
+  const isNew = gsfIsNew(scheme);
+  const saved = gsfSavedIds.has(scheme.id);
+  const style = GSF_CATEGORY_STYLE[scheme.category] || { bg: '#f1f5f9', icon: '🏛️' };
+  const statusLabel = effStatus === 'open' ? '🟢 Ongoing' : effStatus === 'upcoming' ? '🟡 Upcoming' : '🔴 Closed';
+  const countdown = gsfCountdownHTML(scheme, effStatus);
+  const docsHTML = scheme.documents.map(d => `<span class="gsf-doc-chip">📄 ${gsfEsc(d)}</span>`).join('');
+  const faqHTML = scheme.faqs.map(f => `<div class="gsf-faq-item"><div class="q">Q. ${gsfEsc(f.q)}</div><div class="a">${gsfEsc(f.a)}</div></div>`).join('');
+  return `
+  <div class="gsf-card" data-id="${scheme.id}">
+    <div class="gsf-card-top">
+      <div class="gsf-icon" style="background:${style.bg}">${style.icon}</div>
+      <div class="gsf-card-titlewrap">
+        <div class="gsf-card-name">${gsfEsc(scheme.name)}</div>
+        <div class="gsf-card-ministry">${gsfEsc(scheme.ministry)}</div>
+      </div>
+      <button class="gsf-save-btn ${saved ? 'saved' : ''}" onclick="gsfToggleSave('${scheme.id}', this)" aria-label="Save scheme">${saved ? '🔖' : '🔖'}</button>
+    </div>
+    <div class="gsf-badges">
+      <span class="gsf-pill ${effStatus}"><span class="dot"></span>${statusLabel}</span>
+      <span class="gsf-pill gsf-pill-level">${scheme.level === 'Central' ? '🇮🇳 Central Govt.' : '🏛️ ' + gsfEsc(scheme.state) + ' Govt.'}</span>
+      ${isNew ? '<span class="gsf-pill gsf-pill-new">✨ New</span>' : ''}
+    </div>
+    <div class="gsf-card-body">
+      <p class="gsf-desc">${gsfEsc(scheme.desc)}</p>
+      <div class="gsf-meta">
+        <div class="gsf-meta-row"><span class="gsf-meta-label">✅ Eligibility:</span><span class="gsf-meta-val">${gsfEsc(scheme.eligibilityText)}</span></div>
+        <div class="gsf-meta-row"><span class="gsf-meta-label">💰 Benefits:</span><span class="gsf-meta-val">${gsfEsc(scheme.benefits)}</span></div>
+      </div>
+      <div class="gsf-docs">${docsHTML}</div>
+      <div class="gsf-dates">
+        <div class="gsf-date-box"><span class="gsf-date-lbl">Start Date</span><span class="gsf-date-val">${scheme.startDate ? gsfFormatDate(scheme.startDate) : gsfEsc(scheme.startLabel)}</span></div>
+        <div class="gsf-date-box"><span class="gsf-date-lbl">Last Date</span><span class="gsf-date-val">${scheme.lastDate ? gsfFormatDate(scheme.lastDate) : gsfEsc(scheme.lastLabel)}</span></div>
+        ${countdown ? `<div class="gsf-countdown">${countdown}</div>` : ''}
+      </div>
+      <button class="gsf-faq-toggle" onclick="gsfToggleFaq(this)">❓ Frequently Asked Questions (${scheme.faqs.length}) <span class="gsf-faq-arrow">▾</span></button>
+      <div class="gsf-faq-panel">${faqHTML}</div>
+    </div>
+    <div class="gsf-card-footer">
+      <div class="gsf-footer-row">
+        <a href="${scheme.applyUrl}" target="_blank" rel="noopener" class="gsf-btn-apply">Apply Now ↗</a>
+        <a href="${scheme.noticeUrl}" target="_blank" rel="noopener" class="gsf-btn-notice">📄 Official Notification</a>
+      </div>
+      ${effStatus === 'open' ? `<a href="${gsfWhatsAppInquireUrl(scheme)}" target="_blank" rel="noopener" class="gsf-btn-whatsapp">
+        <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Inquire Now on WhatsApp
+      </a>` : ''}
+    </div>
+  </div>`;
+}
+function gsfWhatsAppInquireUrl(scheme) {
+  const stateTxt = scheme.level === 'State' ? scheme.state : (gsfFilterState.state || 'India');
+  const msg = `🏛️ *SCHEME INQUIRY*\n──────────────────────────\n🏢 Chawla Solution – Vadodara, Gujarat\n\n📋 *Scheme:* ${scheme.name}\n📍 *State:* ${stateTxt}\n🏢 *Dept:* ${scheme.ministry}\n\nThis scheme is currently 🟢 Ongoing. I would like help understanding the eligibility and applying for it. Please guide me.\n──────────────────────────\nThank you! 🙏`;
+  return 'https://wa.me/919201347957?text=' + encodeURIComponent(msg);
+}
+function gsfToggleFaq(btn) {
+  const panel = btn.nextElementSibling;
+  panel.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+function gsfToggleSave(id, btn) {
+  if (gsfSavedIds.has(id)) gsfSavedIds.delete(id);
+  else gsfSavedIds.add(id);
+  try { localStorage.setItem('gsf_saved_schemes', JSON.stringify([...gsfSavedIds])); } catch (e) {}
+  btn.classList.toggle('saved');
+  const countEl = document.getElementById('gsfSavedCount');
+  if (countEl) countEl.textContent = gsfSavedIds.size;
+  if (gsfFilterState.savedOnly) gsfRenderGrid();
+}
+function gsfRenderGrid() {
+  const grid = document.getElementById('gsfGrid');
+  const countText = document.getElementById('gsfCountText');
+  const loadMoreWrap = document.getElementById('gsfLoadMoreWrap');
+  if (!grid) return;
+
+  let list = GSF_SCHEMES.filter(gsfMatchesFilters);
+
+  // Recently-added & status priority sort: New first, then Open, then Upcoming, then Closed
+  list.sort((a, b) => {
+    const score = s => (gsfIsNew(s) ? -2 : 0) + (gsfEffectiveStatus(s) === 'open' ? 0 : gsfEffectiveStatus(s) === 'upcoming' ? 1 : 2);
+    return score(a) - score(b) || a.name.localeCompare(b.name);
+  });
+
+  const savedCountEl = document.getElementById('gsfSavedCount');
+  if (savedCountEl) savedCountEl.textContent = gsfSavedIds.size;
+
+  if (list.length === 0) {
+    grid.innerHTML = `<div class="gsf-empty"><div class="gsf-empty-icon">🔍</div><p>No schemes match your filters yet. Try clearing a filter or choosing a different state.</p></div>`;
+    countText.innerHTML = `Showing <b>0</b> schemes`;
+    loadMoreWrap.style.display = 'none';
+    gsfRenderStateNotice(grid, true);
+    return;
+  }
+
+  const visible = list.slice(0, gsfFilterState.visibleCount);
+  grid.innerHTML = visible.map(gsfCardHTML).join('');
+  countText.innerHTML = `Showing <b>${visible.length}</b> of <b>${list.length}</b> scheme${list.length !== 1 ? 's' : ''}${gsfFilterState.state ? ' for <b>' + gsfEsc(gsfFilterState.state) + '</b>' : ''}`;
+  loadMoreWrap.style.display = visible.length < list.length ? 'block' : 'none';
+
+  gsfRenderStateNotice(grid, false);
+}
+function gsfRenderStateNotice(grid, isEmpty) {
+  const hasStateSchemes = gsfFilterState.state && GSF_SCHEMES.some(s => s.level === 'State' && s.state === gsfFilterState.state);
+  if (gsfFilterState.state && !hasStateSchemes) {
+    const notice = `<div class="gsf-banner" style="margin-bottom:18px;">
+      <div class="gsf-banner-icon">📍</div>
+      <div class="gsf-banner-text">We're still adding state-specific schemes for <b>${gsfEsc(gsfFilterState.state)}</b>. Meanwhile here are all <b>Central Government schemes</b> you may be eligible for. For a full state-wise list, check the official <a href="https://www.myscheme.gov.in/" target="_blank" rel="noopener" style="color:var(--blue);font-weight:700;">MyScheme portal ↗</a>.</div>
+    </div>`;
+    grid.insertAdjacentHTML('beforebegin', notice);
+  }
+  document.querySelectorAll('.gsf-grid-notice').forEach(n => n.remove());
+}
+function gsfLoadMore() {
+  gsfFilterState.visibleCount += 6;
+  gsfRenderGrid();
+}
+
+/* ───────────── ELIGIBILITY MODAL ───────────── */
+function gsfOpenModal() {
+  document.getElementById('gsfModalOverlay').classList.add('show');
+}
+function gsfCloseModal() {
+  document.getElementById('gsfModalOverlay').classList.remove('show');
+}
+function gsfUpdateModalSubmit() {
+  const btn = document.getElementById('gsfModalSubmit');
+  btn.disabled = !(gsfFilterState.modalWho && gsfFilterState.modalState);
+}
+function gsfSubmitEligibility() {
+  const who = gsfFilterState.modalWho;
+  const tag = GSF_WHO_MAP[who] || who;
+  document.getElementById('gsfState').value = gsfFilterState.modalState;
+  if (tag !== 'Anyone') {
+    document.getElementById('gsfEligibility').value = GSF_ELIGIBILITY.includes(tag) ? tag : '';
+  } else {
+    document.getElementById('gsfEligibility').value = '';
+  }
+  gsfApplyFilters();
+  gsfCloseModal();
+  const sec = document.getElementById('schemes');
+  if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* ───────────── WHATSAPP / EMAIL ALERTS ───────────── */
+function gsfUpdateAlertLinks() {
+  const state = gsfFilterState.state || 'my state';
+  const waBtn = document.getElementById('gsfWaAlertBtn');
+  const emailBtn = document.getElementById('gsfEmailAlertBtn');
+  const msg = `🔔 *SCHEME ALERT SUBSCRIPTION*\nPlease alert me on WhatsApp whenever a new government scheme launches for *${state}*. \n\nMy Name: \nMy State: ${state}`;
+  if (waBtn) waBtn.href = 'https://wa.me/919201347957?text=' + encodeURIComponent(msg);
+  if (emailBtn) emailBtn.href = 'mailto:?subject=' + encodeURIComponent('Subscribe me for new scheme alerts — ' + state) + '&body=' + encodeURIComponent(`Please add me to the email alert list for new government schemes in ${state}.\n\nMy Name: \nMy Email: `);
+}
+
+document.addEventListener('DOMContentLoaded', gsfInit);
+
+
 /* ═══ PASSPORT FEE UPDATE TOAST ═══ */
 function closePassportToast() {
   const t = document.getElementById('pfToast');
